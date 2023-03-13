@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: lower terrain
+    uniqueID: 650061207
+    locked: 0
+  - name: entities
+    uniqueID: 1795984233
+    locked: 0
+  - name: upper terrain
+    uniqueID: 2650267401
+    locked: 0
+  - name: fx
+    uniqueID: 3359141721
+    locked: 0
+  - name: interface
+    uniqueID: 2163799791
+    locked: 0
