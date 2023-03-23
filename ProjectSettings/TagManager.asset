@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Tile
   - 
   - 
   - 
@@ -41,14 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: lower terrain
+  - name: background
     uniqueID: 650061207
+    locked: 0
+  - name: crops
+    uniqueID: 2650267401
     locked: 0
   - name: entities
     uniqueID: 1795984233
-    locked: 0
-  - name: upper terrain
-    uniqueID: 2650267401
     locked: 0
   - name: fx
     uniqueID: 3359141721
