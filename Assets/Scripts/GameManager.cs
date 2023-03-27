@@ -8,12 +8,29 @@ public class GameManager : MonoBehaviour
 {
     public int curDay;
     public int money;
+    public int cropInventory;
+
     public CropData selectedCropToPlant;
+    public TextMeshProUGUI statsText;
+
+    public event UnityAction onNewDay;
 
     // Singleton
     public static GameManager instance;
 
-    private void Awake()
+    void OnEnable()
+    {
+        Crop.onPlantCrop += OnPlantCrop;
+        Crop.onHarvestCrop += OnHarvestCrop;
+    }
+
+    void OnDisable()
+    {
+        Crop.onPlantCrop -= OnPlantCrop;
+        Crop.onHarvestCrop -= OnHarvestCrop;
+    }
+
+    void Awake()
     {
         // Initialize the singleton
         if(instance != null && instance != this) {
@@ -24,9 +41,27 @@ public class GameManager : MonoBehaviour
             instance = this;
         }
     }
+
     // Called when we press the next day button
+    public void SetNextDay()
+    {
+        
+    }
+
+    //Called when a crop has been planted
+    // Listening to the Crop.onPlantCrop event.
     public void OnPlantCrop(CropData crop)
     {
+        cropInventory--;
+        UpdateStatsText();
+    }
+
+    // Called when a crop has been harvested.
+    // Listening to the Crop.onCropHarvest event.
+    public void OnHarvestCrop(CropData crop)
+    {
+        money += crop.sellPrice;
+        UpdateStatsText();
     }
 
     // Called when we want to purchase a crop
@@ -48,5 +83,6 @@ public class GameManager : MonoBehaviour
     // Update the stats text to display our current stats.
     void UpdateStatsText()
     {
+        statsText.text = $"Day: {curDay}\nMoney: ${money}\nCrop Inventory: {cropInventory}";
     }
 }
