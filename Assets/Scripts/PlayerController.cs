@@ -33,8 +33,8 @@ public class PlayerController : MonoBehaviour
         // When we press down the interact key.
         if(interactInput)
         {
-            TryInteractTile();
             interactInput = false;
+            TryInteractTile();
         }
     }
 

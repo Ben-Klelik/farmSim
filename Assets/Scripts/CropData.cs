@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Crop Data", menuName = "New Crop Data")]
 public class CropData : ScriptableObject
 {
+    public string type;
     public int daysToGrow;
     public Sprite[] growProgressSprites;
     public Sprite readyToHarvestSprite;
+    public int amount;
 
     public int purchasePrice;
     public int sellPrice;

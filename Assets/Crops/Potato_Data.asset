@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21058746001fa87438218ac13b4374f1, type: 3}
   m_Name: Potato_Data
   m_EditorClassIdentifier: 
-  daysToGrow: 0
-  growProgressSprites: []
-  readyToHarvestSprite: {fileID: 0}
-  purchasePrice: 0
-  sellPrice: 0
+  type: 
+  daysToGrow: 9
+  growProgressSprites:
+  - {fileID: 7070871744804167770, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: 7070871744804167770, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: -3043213038907666031, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: -3043213038907666031, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: -3043213038907666031, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: 8845088905277404993, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: 8845088905277404993, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: 8845088905277404993, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  - {fileID: 8845088905277404993, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  readyToHarvestSprite: {fileID: 8479888223881489277, guid: 66f5a3651112a1a4293860d42b2bf2c6, type: 3}
+  amount: 0
+  purchasePrice: 40
+  sellPrice: 100
