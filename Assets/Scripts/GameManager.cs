@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
+    /*
+     * TODO
+     * Add sound
+     * Finish lighting
+     * Add crops
+     * Fix buttons
+     * Auto days
+     * Finish global intensity stuff
+     * Polish feel
+     * Polish lighting
+     */
+
     public int curDay;
     public int money;
-
+    private int minute;
+    private int hour;
+    private float timeBuffer;
+    private float timeStep;
 
     public CropData selectedCropToPlant;
 
@@ -17,6 +33,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI potatoSeedsCountText;
     public TextMeshProUGUI currentDayText;
     public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI timeText;
+
+    public Light2D globalLight;
 
     public event UnityAction onNewDay;
 
@@ -37,6 +56,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        minute = 30;
+        hour = 4;
+        timeBuffer = 0;
+        timeStep = 0.2f;
         // Initialize the singleton
         if (instance != null && instance != this) {
             Destroy(gameObject);
@@ -46,12 +69,29 @@ public class GameManager : MonoBehaviour
             instance = this;
             print(instance);
         }
+        globalLight.intensity = Mathf.Sin(hour * Mathf.PI / 24f) + 0.1f;
     }
 
-    // Called when we press the next day button
-    public void SetNextDay()
+    private void FixedUpdate()
     {
-        
+        timeBuffer += timeStep;
+        while (timeBuffer > 0)
+        {
+            minute++;
+            timeBuffer--;
+        }
+        if (minute >= 60)
+        {
+            hour = (hour + 1) % 24;
+            globalLight.intensity = Mathf.Sin(hour * Mathf.PI / 24f) + 0.1f;
+            minute = 0;
+        }
+        timeText.text = $"{hour % 12 + 1:00}:{minute % 60:00} {((hour < 12) ? "AM" : "PM")}";
+    }
+
+    private void updateGlobalIntensity(int hour)
+    {
+
     }
 
     public void SetSelectedCrop(CropData crop)
@@ -100,14 +140,12 @@ public class GameManager : MonoBehaviour
     // Update the stats text to display our current stats.
     void UpdateStatsText(CropData crop)
     {
-
-        //statsText.text = $"Day: {curDay}\nMoney: ${money}\nCrop Inventory: {cropInventory}";
         if (selectedCropToPlant.type.Equals("wheat"))
             wheatSeedsCountText.text = $"{crop.amount}";
         else if (selectedCropToPlant.type.Equals("potato"))
             potatoSeedsCountText.text = $"{crop.amount}";
 
-        currentDayText.text = $"{curDay}";
+        currentDayText.text = $"";
         moneyText.text = $"{money}";
     }
 }

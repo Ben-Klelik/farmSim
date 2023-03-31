@@ -29,7 +29,7 @@ public class FieldTile : MonoBehaviour
     }
 
     // Called every time a new day occurs.
-    // Only called if the tile contains a crop.
+    // Only does something if the tile contains a crop.
     void OnNewDay ()
     {
         if(!HasCrop())
